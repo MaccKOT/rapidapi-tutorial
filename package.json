@@ -1,0 +1,20 @@
+{
+  "name": "currency-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "run": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "ohmyfetch": "^0.4.18"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
