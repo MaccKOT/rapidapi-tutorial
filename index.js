@@ -34,22 +34,20 @@ const convertCurrency = async (fromCurrency, toCurrency, amount) => {
 
 // simple api
 app.get('/', async (req, res) => {
-  try {
-    const { fromCurrency, toCurrency, amount } = req.query;
+  const { fromCurrency, toCurrency, amount } = req.query;
 
-    console.log(fromCurrency, toCurrency, amount);
-
-    let message = await convertCurrency(
+  if (!fromCurrency || !toCurrency || !amount) {
+    res.status(404).json({ message: 'Missing or wrong parameters' });
+  } else {
+    const message = await convertCurrency(
       fromCurrency,
       toCurrency,
       parseInt(amount)
     );
-    res.json(message);
-  } catch (error) {
-    res.json(`Missing or wrong parameters`);
+    res.json({ message });
   }
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log(`Server is listening at port ${PORT}`);
 });
