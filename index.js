@@ -36,7 +36,7 @@ const convertCurrency = async (fromCurrency, toCurrency, amount) => {
 app.get('/', async (req, res) => {
   const { fromCurrency, toCurrency, amount } = req.query;
 
-  if (!fromCurrency || !toCurrency || !amount) {
+  if (!fromCurrency || !toCurrency || !parseInt(amount)) {
     res.status(404).json({ message: 'Missing or wrong parameters' });
   } else {
     const message = await convertCurrency(
